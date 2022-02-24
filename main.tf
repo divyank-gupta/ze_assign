@@ -22,19 +22,19 @@ module "security-and-authentication" {
   environment            = var.environment
   generated_key_name     = var.generated_key_name
   vpc_id                 = module.networking.vpc_id
-  bastion_public_ip             = module.ec2.bastion_public_ip
-  instance_count         = var.instance_count
+  bastion_public_ip      = module.ec2.bastion_public_ip
 }
 
 
 module "ec2" {
-  source                 = "./modules/ec2"
-  instance_count         = var.instance_count
-  instance_ami           = var.instance_ami
-  instance_type          = var.instance_type
-  vpc_security_group_ids = [module.networking.vpc_security_group]
-  private_security_group_ids = [module.networking.vpc_security_group, module.security-and-authentication.private-sg]
-  private_subnet_id      = module.networking.private_subnet_id
-  public_subnet_id       = module.networking.public_subnet_id
-  key_name               = module.security-and-authentication.ssh_key
+  source                      = "./modules/ec2"
+  private_instance_count      = var.private_instance_count
+  public_instance_count       = var.public_instance_count
+  instance_ami                = var.instance_ami
+  instance_type               = var.instance_type
+  public_security_group_ids   = [module.networking.vpc_security_group, module.security-and-authentication.public-sg]
+  private_security_group_ids  = [module.networking.vpc_security_group, module.security-and-authentication.private-sg]
+  private_subnet_id           = module.networking.private_subnet_id
+  public_subnet_id            = module.networking.public_subnet_id
+  key_name                    = module.security-and-authentication.ssh_key
 }

@@ -1,5 +1,9 @@
-variable "instance_count" {
-  description = "The number of ec2 instances to be launched"
+variable "private_instance_count" {
+  description = "The number of ec2 instances to be launched in private subnet"
+}
+
+variable "public_instance_count" {
+  description = "The number of ec2 instances to be launched in public subnet"
 }
 
 variable "instance_ami" {
@@ -17,14 +21,14 @@ variable "public_subnet_id" {
   description = "Public Subnet id"
 }
 
-variable "vpc_security_group_ids" {
-  description = "Security group"
-}
-
 variable "key_name" {
   description = "Key"
 }
 
 variable "private_security_group_ids" {
+  description = "Security group"
+}
+
+variable "public_security_group_ids" {
   description = "Security group"
 }

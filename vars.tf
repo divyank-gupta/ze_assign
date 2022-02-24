@@ -18,7 +18,11 @@ variable "private_subnets_cidr" {
   description = "Private Subnets CIDR's"
 }
 
-variable "instance_count" {
+variable "private_instance_count" {
+  description = "The number of ec2 instances to be launched"
+}
+
+variable "public_instance_count" {
   description = "The number of ec2 instances to be launched"
 }
 

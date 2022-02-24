@@ -4,5 +4,9 @@ output "ssh_key" {
 }
 
 output "private-sg" {
-  value = "${aws_security_group.sg2_private_machine[*].id}"
+  value = "${aws_security_group.sg2_private_machine_sg.id}"
+}
+
+output "public-sg" {
+  value = "${aws_security_group.sg1_bastion_machine_sg.id}"
 }

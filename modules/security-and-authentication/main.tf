@@ -16,41 +16,35 @@ resource "aws_key_pair" "generated_key" {
 
 }
 
-resource "aws_security_group" "sg1_bastion-machine" {
-  count                     = var.instance_count
-  name = "${var.environment}-bastion-sg"
-  vpc_id = var.vpc_id
-  egress {
-    cidr_blocks = [ "0.0.0.0/0" ]
-    protocol = "-1"
-    from_port = 0
-    to_port = 0
-  }  
-  ingress {
-    protocol = "tcp"
-    cidr_blocks = [ "0.0.0.0/0" ]
-    from_port = 0
-    to_port = 22
-  }
-}
-
-resource "aws_security_group" "sg2_private_machine" {
-  count                     = var.instance_count
-  name                      = "${var.environment}-private-sg"
+resource "aws_security_group" "sg1_bastion_machine_sg" {
+  name                      = "${var.environment}-bastion-sg"
   vpc_id                    = var.vpc_id
   egress {
-    # { for i in var.bastion_public_ip:
-    #   cidr_blocks.append(i"/32")
-    # }
-    cidr_blocks             = ["0.0.0.0/0"]
+    cidr_blocks             = [ "0.0.0.0/0" ]
     protocol                = "-1"
     from_port               = 0
     to_port                 = 0
   }  
   ingress {
-    # { for i in var.bastion_public_ip:
-    #   cidr_blocks.append(i"/32")
-    # }
+    protocol                = "tcp"
+    cidr_blocks             = [ "0.0.0.0/0" ]
+    from_port               = 0
+    to_port                 = 22
+  }
+}
+
+resource "aws_security_group" "sg2_private_machine_sg" {
+  name                      = "${var.environment}-private-sg"
+  vpc_id                    = var.vpc_id
+
+  egress {
+    cidr_blocks             = ["0.0.0.0/0"]
+    protocol                = "-1"
+    from_port               = 0
+    to_port                 = 0
+  }  
+       
+  ingress {
     protocol                = "tcp"
     cidr_blocks             = [ "0.0.0.0/0" ]
     from_port               = 0

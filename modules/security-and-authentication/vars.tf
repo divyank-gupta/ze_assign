@@ -15,7 +15,3 @@ variable "vpc_id" {
 variable "bastion_public_ip" {
   description = "public ip of bastion machine"
 }
-
-variable "instance_count" {
-  description = "The number of ec2 instances to be launched"
-}

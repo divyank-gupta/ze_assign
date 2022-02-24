@@ -20,7 +20,8 @@ public_subnets_cidr  = ["172.16.136.0/22","172.16.140.0/22"] //List of Public su
 private_subnets_cidr = ["172.16.120.0/22","172.16.124.0/22"] //List of private subnet cidr range
 
 /* module ec2 */
-instance_count           = 1
+private_instance_count   = 1
+public_instance_count    = 1
 instance_ami             = "ami-0c6615d1e95c98aca"
 instance_type            = "t2.micro"
 generated_key_name       = "terraform-key-pair"
