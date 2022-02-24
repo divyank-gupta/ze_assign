@@ -1,5 +1,4 @@
 # ze_assign
-
 Tested on MacOS machine
 Terraform Version 1.16.0
 
