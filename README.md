@@ -29,5 +29,5 @@ Take a clone of this repository, and run the following commands to initialize th
 
 3. terraform apply -var-file dev.tfvars
 
-After provisioning the infrastructure, you will have a key created in your current working directory from which you did run 'terraform apply' command.
+After provisioning the infrastructure, you will have a key created in your current working directory.
 You can use tha key to login to the machines.
