@@ -14,8 +14,8 @@ def execute_command(client,cmd):
         exit_code = shell.exit_code
 
 def accept_user_input():
-    hosts = ['13.126.230.143', '65.0.3.41']
-    client = ParallelSSHClient(hosts, user='ec2-user', password=None, port=22, pkey='C:/Users/Divyansh/Desktop/Divyansh/Scripts/RemoteConnection/divyansh-test.pem')
+    hosts = ['3.111.186.201', '13.127.233.235']
+    client = ParallelSSHClient(hosts, user='ec2-user', password=None, port=22, pkey='/Users/divyankgupta/Downloads/divyansh-test.pem')
     while(True):
         cmd = input('Enter command to be executed over remote machines: ')
         execute_command(client,cmd)
