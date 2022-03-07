@@ -6,7 +6,7 @@ def execute_command(client,cmd):
     except:
         print("[!] Cannot connect to the SSH Server, Check you credentials")
         exit()
-    output = client.run_shell_commands(shells, cmd)
+    client.run_shell_commands(shells, cmd)
     client.join_shells(shells)
     for shell in shells:
         stdout = list(shell.stdout)
